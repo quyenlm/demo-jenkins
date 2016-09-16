@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+                           http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+    
+	<bean id="immutableData" class="phn.nts.ams.fe.immutable.ImmutableData">
+		<constructor-arg name="mapQuestionSubject">
+			<map>
+				<entry key="Structure" value="questionnaire.subject.structure.jp" />
+				<entry key="Method" value="questionnaire.subject.method.jp" />
+				<entry key="Outline" value="questionnaire.subject.outline.jp" />
+				<entry key="Risk" value="questionnaire.subject.risk.jp" />
+				<entry key="Calculation" value="questionnaire.subject.calculation.jp" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="mapPurposeBo">
+			<map>
+				<entry key="1" value="purpose_bo.short_term_return" />
+				<entry key="2" value="purpose_bo.dispersion_asset_management" />
+				<entry key="3" value="purpose_bo.hedge" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="mapPurposeBoHedgeType">
+			<map>
+				<entry key="0" value="purpose_bo.hedge_type.fx" />
+				<entry key="1" value="purpose_bo.hedge_type.stock" />
+				<entry key="2" value="purpose_bo.hedge_type.commodity" />
+				<entry key="3" value="purpose_bo.hedge_type.foreign_currency" />
+				<entry key="4" value="purpose_bo.hedge_type.corporate_bond" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="mapPurposeBoHedgeAmount">
+			<map>
+				<entry key="0" value="purpose_bo.hedge_amount.less-300.000" />
+				<entry key="1" value="purpose_bo.hedge_amount.300.000-1.000.000" />
+				<entry key="2" value="purpose_bo.hedge_amount.1.000.000-2.500.000" />
+				<entry key="3" value="purpose_bo.hedge_amount.2.500.000-5.000.000" />
+				<entry key="4" value="purpose_bo.hedge_amount.5.000.000-10.000.000" />
+				<entry key="5" value="purpose_bo.hedge_amount.10.000.000-25.000.000" />
+				<entry key="6" value="purpose_bo.hedge_amount.25.000.000-50.000.000" />
+				<entry key="7" value="purpose_bo.hedge_amount.50.000.000-100.000.000" />
+				<entry key="8" value="purpose_bo.hedge_amount.more-100.000.000" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="mapPostDocumentLabel">
+			<map>
+				<entry key="post_document.label.login_id" value="post_document.label.login_id" />
+				<entry key="post_document.label.mt4_id" value="post_document.label.mt4_id" />
+				<entry key="post_document.label.social_mt4_id" value="post_document.label.social_mt4_id" />
+			</map>
+		</constructor-arg>
+	</bean>
+</beans>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SendPostDocument" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="20e98fcb-8daa-41e6-9fa5-cce8ec5dbf10">
+	<property name="ireport.zoom" value="1.1000000000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="Table Dataset 1" uuid="96ba220b-8769-4901-bd99-233df33ec301"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="zipcode" class="java.lang.String"/>
+	<parameter name="address" class="java.lang.String"/>
+	<parameter name="fullName" class="java.lang.String"/>
+	<parameter name="loginId" class="java.lang.String"/>
+	<parameter name="password" class="java.lang.String"/>
+	<parameter name="mt4Id" class="java.lang.String"/>
+	<parameter name="mt4Pass" class="java.lang.String"/>
+	<parameter name="socialId" class="java.lang.String"/>
+	<parameter name="bankName" class="java.lang.String"/>
+	<parameter name="branchName" class="java.lang.String"/>
+	<parameter name="accountType" class="java.lang.String"/>
+	<parameter name="bankAccNo" class="java.lang.String"/>
+	<parameter name="accountName" class="java.lang.String"/>
+	<parameter name="companyName" class="java.lang.String"/>
+	<parameter name="pcUrl" class="java.lang.String"/>
+	<parameter name="wlName" class="java.lang.String"/>
+	<parameter name="yyyy" class="java.lang.String"/>
+	<parameter name="mm" class="java.lang.String"/>
+	<parameter name="dd" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="customerId" class="java.lang.String"/>
+	<parameter name="addressName" class="java.lang.String"/>
+	<parameter name="yyyymmdd" class="java.lang.String"/>
+	<parameter name="corpPicFullname" class="java.lang.String"/>
+	<parameter name="addressNameCorp" class="java.lang.String"/>
+	<parameter name="picZipcode" class="java.lang.String"/>
+	<title>
+		<band height="800" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e5599850-baab-407f-ac6e-eebc555271b2" positionType="Float" x="18" y="216" width="545" height="99"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Meiryo" size="11" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[拝啓
+
+時下益々ご清栄のこととお喜び申し上げます。
+
+この度は、【みんなのシストレ】（店頭デリバティブ取引）に 口座開設いただきまして誠にありがとうございます。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f84455b5-d97e-43cc-adb5-642a6f5a6b0c" positionType="Float" mode="Transparent" x="18" y="175" width="545" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Meiryo" size="11" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[口座開設完了のお知らせ
+]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="f15d8458-00a6-4cbe-be54-e448ae2b2931" positionType="Float" x="18" y="208" width="545" height="1"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="67a73a93-4e5f-48d4-83b7-d43eafa0e989" positionType="Float" mode="Transparent" x="18" y="330" width="545" height="341" forecolor="#000000"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Meiryo" size="11" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{corpPicFullname} + " 様　口座開設手続きが完了致しました。 \n\n"
++ "ご登録住所宛にログイン情報とお振込先口座情報をお送りさせていただきました。\n\n"
+
++ "なお、本書類はご担当者の住所確認を行うためにお送りさせていただきました。\n"
++ "【みんなのオプション】におきましては、知識確認テストを行っていただく必要がございます。\n"
++ "テスト合格後にログイン可能となります。\n\n"
+
++ "※お客様のデリバティブ取引の投資経験が1年未満の場合、「みんなのオプション」の口座開設が現状行えません。\n\n"
+
++ "今後お客様のデリバティブ取引に関する投資経験が弊社基準を満たされた場合、【みんなのオプション】の口座開設が可能となります。\n\n"
+
++ "その他ご質問・ご不明な点がございましたら、Ｅメール又はお電話にてお気軽にお問合せください。\n\n"
+
++ "今後もお客様によりご満足頂けるよう尽力して参りますので、【みんなのシストレ】【みんなのオプション】ならびにトレイダーズ証券株式会社を変わらぬご愛顧を賜りますよう宜しくお願い申し上げます。"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="0bedb27d-3eeb-47ed-b0eb-a40032a4c251" mode="Transparent" x="18" y="28" width="288" height="143" forecolor="#000000"/>
+				<textElement markup="html">
+					<font fontName="Meiryo" size="11" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="10.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{addressNameCorp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="515b907c-154a-474d-9936-77921fd0851e" x="361" y="95" width="193" height="34"/>
+				<textElement>
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[東京都港区浜松町一丁目１０番１４号
+住友東新橋ビル３号館７階]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aaf8fcd3-6d17-4e0f-9113-6654d4b1b2d9" x="454" y="14" width="22" height="20"/>
+				<textElement>
+					<font fontName="Meiryo" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[平成]]></text>
+			</staticText>
+			<image scaleImage="RetainShape" hAlign="Right" vAlign="Middle" onErrorType="Blank">
+				<reportElement uuid="65c614c3-b5bd-48c7-b3e1-5c30b78aa944" x="361" y="34" width="193" height="32"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="8436a49d-53e2-464d-8b30-2d7d1dd67dab" x="475" y="14" width="76" height="20" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Meiryo" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{yyyymmdd}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f49f4881-36e6-4f78-80fb-1cca5b8a15aa" x="361" y="76" width="193" height="20"/>
+				<textElement>
+					<font fontName="Meiryo" size="9" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[〒105-0013]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e6e39dd3-70b4-43c6-83ba-47cab0b732fb" x="18" y="14" width="79" height="20"/>
+				<textElement>
+					<font fontName="Meiryo" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[〒]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0a113dc3-e52f-4eb5-bec9-21bd749ad6db" mode="Transparent" x="31" y="14" width="267" height="20" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Meiryo" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{picZipcode}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d83d889c-cfaf-4d79-8cd5-73427fe81baf" x="361" y="128" width="214" height="20"/>
+				<textElement>
+					<font fontName="Meiryo" size="9" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[TEL:0120-307-144    E-mail:service@min-st.jp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="733c85fd-33ce-4e59-a1aa-f7d1a7855c10" positionType="Float" x="517" y="671" width="46" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Meiryo" size="11" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[敬具
+]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

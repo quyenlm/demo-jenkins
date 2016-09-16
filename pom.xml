@@ -1,0 +1,88 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+		xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>nta.forex.global</groupId>
+		<artifactId>common-parent</artifactId>
+		<version>1.0.6</version>
+	</parent>
+
+	<artifactId>project-parent</artifactId>
+	<version>4.1.0-SNAPSHOT</version>
+	<name>Project Parent</name>
+	<packaging>pom</packaging>
+
+	<modules>
+		<!-- <module>nts-common-exchange</module>
+		<module>phn-nts-commonjms</module>
+		<module>phn-nts-components</module>
+		<module>phn-nts-dbaccessor</module>
+		<module>phn-nts-util</module>
+		<module>phn-api-protocol</module>
+		<module>nts-dealing-inmem</module>
+
+		<module>phn-trs-components</module>
+		<module>phn-trs-util</module>
+		<module>phn-trs-dbaccessor</module> -->
+
+		<module>phn-trs-mypage-commonlogic</module>
+		<!--<module>social-api-admin</module>
+		<module>social-api-common</module>-->
+
+		<module>nts-ams-api-controller</module>
+	</modules>
+
+	<scm>
+		<connection>scm:svn:https://10.2.1.10/svn/pts/src/branches/project-cfg/30.middle/11.ams/nts-ams-api-controller/4.1</connection>
+		<developerConnection>scm:svn:https://10.2.1.10/svn/pts/src/branches/project-cfg/30.middle/11.ams/nts-ams-api-controller/4.1</developerConnection>
+		<url>https://10.2.1.10/svn/pts/src/branches/project-cfg/30.middle/11.ams/nts-ams-api-controller/4.1</url>
+	</scm>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<baseProjectArtifactId>nts-ams-api-controller-parent</baseProjectArtifactId>
+	</properties>
+
+	<distributionManagement>
+		<site>
+			<id>nextop.site</id>
+			<name>Nextop Website</name>
+			<url>${distributionSiteBase}/nts-ams-api-controller/@parsedReleaseVersion@/project-parent</url>
+		</site>
+	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<inherited>false</inherited>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

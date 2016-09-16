@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	<bean id="amsCashBalanceDAO" class="phn.com.nts.db.dao.impl.AmsCashBalanceDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsCashflowDAO" class="phn.com.nts.db.dao.impl.AmsCashflowDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsCustomerDAO" class="phn.com.nts.db.dao.impl.AmsCustomerDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsCustomerAkazanDAO" class="phn.com.nts.db.dao.impl.AmsCustomerAkazanDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsCustomerEwalletDAO" class="phn.com.nts.db.dao.impl.AmsCustomerEwalletDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsCustomerCreditcardDAO" class="phn.com.nts.db.dao.impl.AmsCustomerCreditcardDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsCustomerServiceDAO" class="phn.com.nts.db.dao.impl.AmsCustomerServiceDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsCustomerSurveyDAO" class="phn.com.nts.db.dao.impl.AmsCustomerSurveyDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsCustomerTraceDAO" class="phn.com.nts.db.dao.impl.AmsCustomerTraceDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsDepositDAO" class="phn.com.nts.db.dao.impl.AmsDepositDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsDepositRefDAO" class="phn.com.nts.db.dao.impl.AmsDepositRefDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsGroupDAO" class="phn.com.nts.db.dao.impl.AmsGroupDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsMessageDAO" class="phn.com.nts.db.dao.impl.AmsMessageDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsMessageReadTraceDAO" class="phn.com.nts.db.dao.impl.AmsMessageReadTraceDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsSubGroupDAO" class="phn.com.nts.db.dao.impl.AmsSubGroupDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsSysBankBranchDAO" class="phn.com.nts.db.dao.impl.AmsSysBankBranchDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsSysBankDAO" class="phn.com.nts.db.dao.impl.AmsSysBankDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsSysCountryDAO" class="phn.com.nts.db.dao.impl.AmsSysCountryDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="sysCurrencyDAO" class="phn.com.nts.db.dao.impl.SysCurrencyDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="sysOperationAuthDAO" class="phn.com.nts.db.dao.impl.SysOperationAuthDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="sysOperationDAO" class="phn.com.nts.db.dao.impl.SysOperationDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="sysOperationItemDAO" class="phn.com.nts.db.dao.impl.SysOperationItemDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="sysOperationLogDAO" class="phn.com.nts.db.dao.impl.SysOperationLogDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="sysOperationRoleDAO" class="phn.com.nts.db.dao.impl.SysOperationRoleDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="sysPropertyDAO" class="phn.com.nts.db.dao.impl.SysPropertyDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="sysUniqueidCounterDAO" class="phn.com.nts.db.dao.impl.SysUniqueidCounterDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsSysVirtualBankDAO" class="phn.com.nts.db.dao.impl.AmsSysVirtualBankDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsSysZipcodeDAO" class="phn.com.nts.db.dao.impl.AmsSysZipcodeDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsWhitelabelDAO" class="phn.com.nts.db.dao.impl.AmsWhitelabelDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsWithdrawalDAO" class="phn.com.nts.db.dao.impl.AmsWithdrawalDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsWithdrawalRefDAO" class="phn.com.nts.db.dao.impl.AmsWithdrawalRefDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsIbDAO" class="phn.com.nts.db.dao.impl.AmsIbDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsIbClientDao" class="phn.com.nts.db.dao.impl.AmsIbClientDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsIbKickbackDAO" class="phn.com.nts.db.dao.impl.AmsIbKickbackDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="sysAppDateDAO" class="phn.com.nts.db.dao.impl.SysAppDateDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsTransferMoneyDAO" class="phn.com.nts.db.dao.impl.AmsTransferMoneyDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	
+	<bean id="amsWhitelabelConfigDAO" class="phn.com.nts.db.dao.impl.AmsWhitelabelConfigDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="fxSymbolDAO" class="phn.com.nts.db.dao.impl.FxSymbolDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>		
+	<bean id="amsCustomerBankDAO" class="phn.com.nts.db.dao.impl.AmsCustomerBankDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsSubGroupSymbolDAO" class="phn.com.nts.db.dao.impl.AmsSubGroupSymbolDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsPromotionDAO" class="phn.com.nts.db.dao.impl.AmsPromotionDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsPromotionBaseCcyDAO" class="phn.com.nts.db.dao.impl.AmsPromotionBaseCcyDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsPromotionCustomerDAO" class="phn.com.nts.db.dao.impl.AmsPromotionCustomerDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>	
+	<bean id="amsExchangerDAO" class="phn.com.nts.db.dao.impl.AmsExchangerDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>	
+	<bean id="amsExchangerSymbolDAO" class="phn.com.nts.db.dao.impl.AmsExchangerSymbolDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>	
+	<bean id="amsMailTemplateDAO" class="phn.com.nts.db.dao.impl.AmsMailTemplateDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsDmcCustomerContestDAO" class="phn.com.nts.db.dao.impl.AmsDmcCustomerContestDAO">
+	   	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="amsDemoContestDAO" class="phn.com.nts.db.dao.impl.AmsDemoContestDAO">
+	   	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="amsCustomerDocDAO" class="phn.com.nts.db.dao.impl.AmsCustomerDocDAO">
+	   	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+
+    <bean id="amsWhitelabelCalendarDAO" class="phn.com.nts.db.dao.impl.AmsWhitelabelCalendarDAO">
+        <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <!-- View -->
+	<bean id="amsFeSearchHistoryDAO" class="phn.com.nts.db.dao.impl.AmsViewFeSearchHistoryDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	<bean id="amsFeExchangerHistoryDAO" class="phn.com.nts.db.dao.impl.AmsViewFeExchangerHistoryDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+	
+	<bean id="amsCustomerConfigDAO" class="phn.com.nts.db.dao.impl.AmsCustomerConfigDAO">
+   		<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+	<bean id="amsPaymentgwBalanceDAO" class="phn.com.nts.db.dao.impl.AmsPaymentgwBalanceDAO">
+	   	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+	<bean id="amsPaymentgwCashflowDAO" class="phn.com.nts.db.dao.impl.AmsPaymentgwCashflowDAO">
+	   	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+	<bean id="amsPaymentgwTransactionDAO" class="phn.com.nts.db.dao.impl.AmsPaymentgwTransactionDAO">
+	   	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+	<bean id="amsPaymentgwWlDAO" class="phn.com.nts.db.dao.impl.AmsPaymentgwWlDAO">
+	   	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+	<bean id="amsWithdrawalFeeDAO" class="phn.com.nts.db.dao.impl.AmsWithdrawalFeeDAO">
+	   	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="amsPaymentGWPrioDAO" class="phn.com.nts.db.dao.impl.AmsPaymentGwPrioDAO">
+       	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    
+    <bean id="amsPaymentGwDAO" class="phn.com.nts.db.dao.impl.AmsPaymentGwDAO">
+       	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="amsErrorCodeDAO" class="phn.com.nts.db.dao.impl.AmsErrorCodeDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="fxSummaryRateDAO" class="phn.com.nts.db.dao.impl.FxSummaryRateDAO">
+	   	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    
+	<bean id="scCustomerDAO" class="phn.com.nts.db.dao.impl.ScCustomerDAO">
+	    <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+	</bean>
+
+    <bean id="scCustomerCopyDAO" class="phn.com.nts.db.dao.impl.ScCustomerCopyDAO">
+        <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+
+    <bean id="scCustomerFollowDAO" class="phn.com.nts.db.dao.impl.ScCustomerFollowDAO">
+        <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+   
+    <bean id="scCustomerServiceDAO" class="phn.com.nts.db.dao.impl.ScCustomerServiceDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    
+    <bean id="scInvestmentDAO" class="phn.com.nts.db.dao.impl.ScInvestmentDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+
+    <bean id="scFeedDao" class="phn.com.nts.db.dao.impl.ScFeedDAO">
+        <property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+   
+    <bean id="scInvestmentCashFlowDAO" class="phn.com.nts.db.dao.impl.ScInvestmentCashflowDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    
+    <bean id="scOrderDAO" class="phn.com.nts.db.dao.impl.ScOrderDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="scSummaryTradingCustDAO" class="phn.com.nts.db.dao.impl.ScSummaryTradingCustDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="scBrokerDAO" class="phn.com.nts.db.dao.impl.ScBrokerDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <!-- Add by VietNK to add new mapping for FxSymbolGroup and FxSymbolGroupMapping     -->
+    <bean id="fxSymbolGroup" class="phn.com.nts.db.dao.impl.FxSymbolGroupDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+     <bean id="fxSymbolGroupMapping" class="phn.com.nts.db.dao.impl.FxSymbolGroupMappingDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="amsAffiliateDAO" class="phn.com.nts.db.dao.impl.AmsAffiliateDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="amsWhitelabelReportDAO" class="phn.com.nts.db.dao.impl.AmsWhitelabelReportDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="boCustomerDAO" class="phn.com.nts.db.dao.impl.BoCustomerDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactoryBo"/></property>
+    </bean>
+    <bean id="amsTestSummaryDAO" class="phn.com.nts.db.dao.impl.AmsTestSummaryDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="amsQuestionnaireDAO" class="phn.com.nts.db.dao.impl.AmsQuestionnaireDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="amsCustomerTestDAO" class="phn.com.nts.db.dao.impl.AmsCustomerTestDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="amsPackageTestDAO" class="phn.com.nts.db.dao.impl.AmsPackageTestDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactory"/></property>
+    </bean>
+    <bean id="rptUsedBoTestDAO" class="phn.com.nts.db.dao.impl.RptUsedBoTestDAO">
+    	<property name="sessionFactory"><ref bean="masterSessionFactoryRpt"/></property>
+    </bean>
+</beans>

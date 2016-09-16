@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:jms="http://www.springframework.org/schema/jms"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/jms 
+                           http://www.springframework.org/schema/jms/spring-jms.xsd
+                           http://activemq.apache.org/schema/core 
+                           http://activemq.apache.org/schema/core/activemq-core.xsd">
+  
+	<!-- Jms Sender -->
+	<bean id="JmsContextSender" class="phn.nts.ams.fe.common.JmsContextSender" >
+		<property name="jmsRealSender" ref="JmsRealSender"></property>
+	</bean>
+	
+	<bean id="JmsRealSender" class="phn.nts.ams.fe.common.JmsSender" >
+		<property name="jmsTemplate" ref="jmsRealTemplate" />
+	</bean>
+	
+	<bean id="JmsBoSender" class="phn.nts.ams.fe.common.JmsSender" >
+		<property name="jmsTemplate" ref="jmsBoTemplate" />
+	</bean>
+	
+	<!-- Connection -->
+	
+	<!-- start jmsConnectionFactory -->
+	<bean id="jmsRealFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
+	    <property name="connectionFactory">
+	      <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+	        <property name="brokerURL" value="${activemq.real.url}" />
+	      </bean>
+	    </property>
+	</bean>
+  
+  	<bean id="jmsAmsFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
+	    <property name="connectionFactory">
+	      <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+	        <property name="brokerURL" value="${activemq.ams.url}" />
+	      </bean>
+	    </property>
+	</bean>
+  	
+  	<bean id="jmsBoFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
+	    <property name="connectionFactory">
+	      <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+	        <property name="brokerURL" value="${activemq.bo.url}" />
+	      </bean>
+	    </property>
+	</bean>
+	<!-- end jmsConnectionFactory -->
+	
+	<!-- start jmsTemplate -->
+  	<bean id="jmsRealTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="jmsRealFactory"  />
+    </bean>
+    
+  	<bean id="jmsBoTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="jmsBoFactory"  />
+    </bean>
+  	
+  	<bean id="jmsAmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="jmsAmsFactory"  />
+    </bean>
+  	
+  	<!-- end jmsTemplate -->
+  	
+    <bean id="mapMessageConverter" class="phn.nts.ams.fe.common.messages.MapMessageConverter">
+    </bean>
+  	
+    <!-- start Listener -->       
+    <bean id="amsFrontAdminMessageSubcriber" class="phn.nts.ams.fe.common.messages.AmsFrontAdminMessageSubcriber">
+    </bean>
+    
+    <bean id="scAuthenMessage" class="phn.nts.ams.fe.common.messages.ScAuthenMessage">
+    	<property name="jmsRealSender" ref="JmsRealSender"/>
+    </bean>
+    
+    <bean id="scTradingAuthenMessage" class="phn.nts.ams.fe.common.messages.ScTradingAuthenMessage">
+    	<property name="jmsRealSender" ref="JmsRealSender"/>
+    </bean>
+    
+    <jms:listener-container connection-factory="jmsRealFactory" message-converter="mapMessageConverter" destination-type="topic">
+    	<jms:listener destination="topic.AmsFrontAdminMessageResponse" ref="amsFrontAdminMessageSubcriber" method="onMessage"/>
+    </jms:listener-container>
+    
+    <jms:listener-container connection-factory="jmsBoFactory" message-converter="mapMessageConverter" destination-type="topic">
+    	<jms:listener destination="topic.BoAccountResponse" ref="amsFrontAdminMessageSubcriber" method="onMessage"/>
+    </jms:listener-container>
+    
+    <!-- AMS API -->
+    <bean id="amsCustomerResponsePublisher" class="com.nts.ams.api.controller.customer.jms.AmsCustomerResponsePublisher" >
+		<property name="jmsTemplate" ref="jmsAmsTemplate" />
+		<property name="topicName" value="topic.AmsCustomerInfoResponse" />
+	</bean>
+	
+	<bean id="amsCustomerReportResponsePublisher" class="com.nts.ams.api.controller.customer.jms.AmsCustomerResponsePublisher" >
+		<property name="jmsTemplate" ref="jmsAmsTemplate" />
+		<property name="topicName" value="topic.AmsCustomerReportInfoResponse" />
+	</bean>
+	
+	<bean id="amsCustomerBEResponsePublisher" class="com.nts.ams.api.controller.customer.jms.AmsCustomerResponsePublisher" >
+		<property name="jmsTemplate" ref="jmsAmsTemplate" />
+		<property name="topicName" value="topic.AmsCustomerInfoBEResponse" />
+	</bean>
+	
+	<bean id="amsTransactionInfoPublisher" class="com.nts.ams.api.controller.transfer.jms.AmsTransactionInfoPublisher" >
+		<property name="jmsTemplate" ref="jmsAmsTemplate" />
+		<property name="topicName" value="topic.AmsTransactionInfoResponse" />
+	</bean>
+	
+    <bean id="amsCustomerInfoRequestSubcriber" class="com.nts.ams.api.controller.customer.jms.AmsCustomerInfoRequestSubcriber" />
+    <bean id="amsCustomerReportInfoSubcriber" class="com.nts.ams.api.controller.customer.jms.AmsCustomerInfoRequestSubcriber" />
+    <bean id="amsCustomerBERequestSubcriber" class="com.nts.ams.api.controller.customer.jms.AmsCustomerInfoRequestSubcriber" />
+    <bean id="amsTransactionInfoSubcriber" class="com.nts.ams.api.controller.transfer.jms.AmsTransactionInfoSubcriber" />
+    <bean id="ntdMessageSubcriber" class="phn.nts.ams.fe.common.messages.NTDMessageSubcriber" />
+    
+    <jms:listener-container connection-factory="jmsAmsFactory" message-converter="mapMessageConverter" destination-type="queue">
+    	<jms:listener destination="queue.AmsCustomerInfoRequest" ref="amsCustomerInfoRequestSubcriber" method="onMessage"/>
+    	<jms:listener destination="queue.AmsTransactionInfoRequest" ref="amsTransactionInfoSubcriber" method="onMessage"/>
+    	<jms:listener destination="queue.AmsCustomerReportInfoRequest" ref="amsCustomerReportInfoSubcriber" method="onMessage"/>
+    	<jms:listener destination="queue.AmsCustomerInfoBERequest" ref="amsCustomerBERequestSubcriber" method="onMessage"/>
+    </jms:listener-container>
+    
+    <jms:listener-container connection-factory="jmsAmsFactory" message-converter="mapMessageConverter" destination-type="topic">
+    	<jms:listener destination="topic.AMSResponseInfo" ref="ntdMessageSubcriber" method="onMessage"/>
+    </jms:listener-container>
+</beans>

@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd">
+	
+	<import resource="spring-ams-api-config.xml"/>
+	<import resource="spring-dao-config.xml"/>
+	<import resource="spring-datasource-config.xml"/>
+	<import resource="spring-jms-config.xml"/>
+	<import resource="spring-immutable-data.xml"/>
+	<import resource="spring-mail-config.xml"/>
+	
+	<bean id="dataCache" class="com.nts.ams.api.controller.cache.DataCache">
+		<property name="socialManager" ref="SocialManager"/>
+		<property name="profileManager" ref="ProfileManager"/>
+		<property name="configuration" ref="amsConfiguration"/>
+	</bean>
+	
+	<!-- Start API Processor -->
+	<bean id="amsSerializeTransactionMananger" class="com.nts.ams.api.controller.transfer.processor.manager.AmsSerializeTransactionMananger" />
+	
+	<bean id="amsCustomerInfoProcessor" class="com.nts.ams.api.controller.customer.processor.AmsCustomerInfoProcessor">
+		<property name="profileManager" ref="ProfileManager"/>
+	</bean>
+	
+	<bean id="amsCustomerBalanceProcessor" class="com.nts.ams.api.controller.customer.processor.AmsCustomerBalanceProcessor">
+		<property name="balanceManager" ref="BalanceManager"/>
+	</bean>
+	
+	<bean id="amsCustomerInfoUpdateProcessor" class="com.nts.ams.api.controller.customer.processor.AmsCustomerInfoUpdateProcessor">
+		<property name="profileManager" ref="ProfileManager"/>
+		<property name="accountManager" ref="AccountManager"/>
+	</bean>
+	
+	<bean id="amsCustomerBoTestUpdateProcessor" class="com.nts.ams.api.controller.customer.processor.AmsCustomerBoTestUpdateProcessor">
+		<property name="accountManager" ref="AccountManager"/>
+		<property name="testBoManager" ref="testBoManager"/>
+	</bean>
+	
+	<bean id="amsBoAdditionalInfoUpdateProcessor" class="com.nts.ams.api.controller.customer.processor.AmsBoAdditionalInfoUpdateProcessor">
+		<property name="testBoManager" ref="testBoManager"/>
+	</bean>
+	
+	<bean id="amsCustomerRegisterSocialProcessor" class="com.nts.ams.api.controller.customer.processor.AmsCustomerRegisterSocialProcessor">
+		<property name="profileManager" ref="ProfileManager"/>
+	</bean>
+	
+	<bean id="amsSocialSendMailProcessor" class="com.nts.ams.api.controller.customer.mail.processor.AmsSocialSendMailProcessor">
+		<property name="profileManager" ref="ProfileManager"/>
+		<property name="accountManager" ref="AccountManager"/>
+	</bean>
+	
+	<bean id="amsCustomerModifySocialProcessor" class="com.nts.ams.api.controller.customer.processor.AmsCustomerModifySocialProcessor">
+		<property name="profileManager" ref="ProfileManager"/>
+	</bean>
+	
+	<bean id="amsCustomerCloseSocialProcessor" class="com.nts.ams.api.controller.customer.processor.AmsCustomerCloseSocialProcessor">
+		<property name="profileManager" ref="ProfileManager"/>
+	</bean>
+	
+	<bean id="amsCustomerReportsProcessor" class="com.nts.ams.api.controller.customer.processor.AmsCustomerReportsProcessor">
+		<property name="profileManager" ref="ProfileManager"/>
+		<property name="reportManager" ref="ReportManager"/>
+	</bean>
+	
+	<bean id="amsDepositProcessor" class="com.nts.ams.api.controller.transfer.processor.AmsDepositProcessor">
+		<property name="depositManager" ref="DepositManager"/>
+		<property name="accountManager" ref="AccountManager"/>
+	</bean>
+	
+	<bean id="amsDepositUpdateProcessor" class="com.nts.ams.api.controller.transfer.processor.AmsDepositUpdateProcessor">
+		<property name="depositManager" ref="DepositManager"/>
+		<property name="accountManager" ref="AccountManager"/>
+	</bean>
+	
+	<bean id="amsWithdrawalProcessor" class="com.nts.ams.api.controller.transfer.processor.AmsWithdrawalProcessor">
+		<property name="accountManager" ref="AccountManager"/>		
+		<property name="balanceManager" ref="BalanceManager"/>
+		<property name="ibManager" ref="IBManager"/>
+		<property name="withdrawalManager" ref="WithdrawalManager"/>
+		<property name="depositManager" ref="DepositManager"/>		
+	</bean>
+	
+	<bean id="amsWithdrawalCancelProcessor" class="com.nts.ams.api.controller.transfer.processor.AmsWithdrawalCancelProcessor">
+		<property name="withdrawalManager" ref="WithdrawalManager"/>
+	</bean>
+	
+	<bean id="amsTransferProcessor" class="com.nts.ams.api.controller.transfer.processor.AmsTransferProcessor">
+		<property name="accountManager" ref="AccountManager"/>		
+		<property name="balanceManager" ref="BalanceManager"/>
+		<property name="transferManager" ref="TransferManager"/>
+		<property name="profileManager" ref="ProfileManager"/>
+	</bean>
+	
+	<bean id="amsTransferSocialAgentProcessor" class="com.nts.ams.api.controller.transfer.processor.AmsTransferSocialAgentProcessor">
+		<property name="accountManager" ref="AccountManager"/>
+		<property name="transferManager" ref="TransferManager"/>
+	</bean>
+	
+	<bean id="amsCustomerPaymentInfoProcessor" class="com.nts.ams.api.controller.transfer.processor.AmsCustomerPaymentInfoProcessor">
+		<property name="profileManager" ref="ProfileManager"/>
+		<property name="withdrawalManager" ref="WithdrawalManager"/>
+	</bean>
+	
+	<bean id="amsCustomerNewsProcessor" class="com.nts.ams.api.controller.customer.processor.AmsCustomerNewsProcessor">
+		<property name="socialManager" ref="SocialManager"/>
+		<property name="profileManager" ref="ProfileManager"/>
+	</bean>
+	
+	<bean id="amsCustomerAgreementNewsProcessor" class="com.nts.ams.api.controller.customer.processor.AmsCustomerAgreementNewsProcessor">
+		<property name="socialManager" ref="SocialManager"/>
+		<property name="profileManager" ref="ProfileManager"/>
+	</bean>
+	
+	<bean id="amsCustomerNewsUpdateProcessor" class="com.nts.ams.api.controller.customer.processor.AmsCustomerNewsUpdateProcessor">
+		<property name="socialManager" ref="SocialManager"/>
+	</bean>
+	
+	<bean id="amsCustomerPaymentUpdateProcessor" class="com.nts.ams.api.controller.customer.processor.AmsCustomerPaymentUpdateProcessor">
+		<property name="profileManager" ref="ProfileManager"/>
+	</bean>
+	
+	<bean id="bjpLoadFileTimer" class="com.nts.ams.api.controller.schedule.BjpLoadFileTimer">
+		<property name="depositManager" ref="DepositManager"/>
+		<property name="accountManager" ref="AccountManager"/>
+	</bean>
+	<!-- End API Processor -->
+	
+	<bean id="serverSocketCtrl" class="com.nts.ams.api.controller.service.ServerSocketThread"></bean>
+	<!-- End AMS-API config -->
+	
+   <bean class="phn.nts.ams.fe.business.impl.MasterDataManagerImpl">
+		<property name="countryDAO" ref="amsSysCountryDAO"/>
+		<property name="currencyDAO" ref="sysCurrencyDAO"/>
+		<property name="whitelabelDAO" ref="amsWhitelabelDAO"/>
+		<property name="symbolCdDAO" ref="fxSymbolDAO"/>
+		<property name="whitelabelConfigDAO" ref="amsWhitelabelConfigDAO"/>
+		<property name="immutableData" ref="immutableData"/>
+	</bean>
+	
+    <bean id="AccountManager" parent="masterTransactionProxyTemplate">
+    	<property name="target">
+			<bean class="phn.nts.ams.fe.business.impl.AccountManagerImpl">
+		    	<property name="iAmsCustomerDao" ref="amsCustomerDAO" />
+		    	<property name="iAmsCustomerServiceDao" ref="amsCustomerServiceDAO" ></property>
+		    	<property name="iAmsIbClientDao" ref="amsIbClientDao" ></property>
+		    	<property name="iAmsIbDao" ref="amsIbDAO" ></property>	
+		    	<property name="iAmsCashBalanceDAO" ref="amsCashBalanceDAO"></property>
+		    	<property name="iAmsTransferMoneyDAO" ref="amsTransferMoneyDAO"></property>
+		    	<property name="iAmsWithdrawalDAO" ref="amsWithdrawalDAO"></property>
+				<property name="iSysAppDateDAO" ref="sysAppDateDAO"/>
+				<property name="iAmsMessageDAO" ref="amsMessageDAO"/>		
+				<property name="iAmsMessageReadTraceDAO" ref="amsMessageReadTraceDAO" />	
+				<property name="iAmsSubGroupDAO" ref="amsSubGroupDAO"/>
+				<property name="iAmsCustomerTraceDAO" ref="amsCustomerTraceDAO" />
+				<property name="iAmsExchangerDAO" ref="amsExchangerDAO"/>
+				<property name="iAmsExchangerSymbolDAO" ref="amsExchangerSymbolDAO"/>
+				<property name="iAmsWhitelabelConfigDAO" ref="amsWhitelabelConfigDAO"/>
+				<property name="scCustomerServiceDAO" ref="scCustomerServiceDAO"/>
+				<property name="scCustomerDAO" ref="scCustomerDAO"/>				
+				<property name="uniqueidCounterDAO" ref="sysUniqueidCounterDAO"/>
+				<property name="scBrokerDAO" ref="scBrokerDAO"/>
+				<property name="iAmsDepositDAO" ref="amsDepositDAO"/>
+				<property name="iAmsDepositRefDAO" ref="amsDepositRefDAO"/>
+				<property name="iAmsSysBankDAO" ref="amsSysBankDAO"/>
+				<property name="jmsContextSender" ref="JmsContextSender" />
+				<property name="amsMessageDAO" ref="amsMessageDAO"/>
+				<property name="boManager" ref="boManager"/>
+				<property name="amsCustomerSurveyDAO" ref="amsCustomerSurveyDAO" />
+			</bean>
+		</property>
+    </bean>
+    <bean id="DepositManager" parent="masterTransactionProxyTemplate">
+    	 <property name="target">
+	    	 	<bean class="phn.nts.ams.fe.business.impl.DepositManagerImpl" parent="abstractManager">
+			    <property name="iAmsDepositDAO" ref="amsDepositDAO" />
+				<property name="iAmsDepositRefDAO" ref="amsDepositRefDAO" />
+			    <property name="iAmsCustomerDAO" ref="amsCustomerDAO" />
+			    <property name="iSysUniqueidCounterDAO" ref="sysUniqueidCounterDAO" />  
+			    <property name="iAmsCashFlowDAO" ref="amsCashflowDAO" />
+			    <property name="iAmsCashBalanceDAO" ref="amsCashBalanceDAO" />
+			    <property name="iAmsWhitelabelConfigDAO" ref="amsWhitelabelConfigDAO" />
+			    <property name="iSysAppDateDAO" ref="sysAppDateDAO" />                  
+			    <property name="iAmsWhitelabelDAO" ref="amsWhitelabelDAO" />
+			    <property name="iAmsCustomerEwalletDAO" ref="amsCustomerEwalletDAO" />        
+			    <property name="iAmsCustomerCreditCardDAO" ref="amsCustomerCreditcardDAO" />
+			    <property name="iAmsTransferMoneyDAO" ref="amsTransferMoneyDAO" />
+			    <property name="mailService" ref="mailService" ></property>       
+			    <property name="iAmsSysCountryDAO" ref="amsSysCountryDAO" />
+			    <property name="iAmsCustomerServiceDAO" ref="amsCustomerServiceDAO" /> 
+			    <property name="iFxSymbolDAO" ref="fxSymbolDAO" /> 
+			    <property name="iPromotionManager" ref="PromotionManager" />
+			    <property name="amsExchangerDAO" ref="amsExchangerDAO" />
+			    <property name="amsExchangerSymbolDAO" ref="amsExchangerSymbolDAO" />
+			    <property name="balanceManager" ref="BalanceManager" />
+			    <property name="amsPromotionDAO" ref="amsPromotionDAO" />
+			    <property name="summaryRateDAO" ref="fxSummaryRateDAO" />
+			    <property name="accountManager" ref="AccountManager" />
+			    <property name="amsCustomerSurveyDAO" ref="amsCustomerSurveyDAO" />
+			  
+			    <property name="amsPaymentGwDAO" ref="amsPaymentGwDAO" />
+			    
+			     <property name="amsErrorCodeDAO" ref="amsErrorCodeDAO" />
+			     <property name="jmsContextSender" ref="JmsContextSender" />
+	    	</bean>
+    	 </property>
+    </bean>
+    
+    <bean id="HistoryManager" parent="masterTransactionProxyTemplate">
+        <property name="target">
+            <bean class="phn.nts.ams.fe.business.impl.HistoryManagerImpl">
+                <property name="iAmsFeSearchHistoryDao" ref="amsFeSearchHistoryDAO" />
+                <property name="iAmsDepositDAO" ref="amsDepositDAO"/>
+                <property name="iAmsWithdrawalDAO" ref="amsWithdrawalDAO"/>
+                <property name="iAmsIbClientDAO" ref="amsIbClientDao"/>
+                <property name="iAmsCustomerDAO" ref="amsCustomerDAO"/>
+                <property name="amsCustomerSurveyDAO" ref="amsCustomerSurveyDAO"/>
+            </bean>
+        </property>
+    </bean>
+	<bean id="ProfileManager" parent="masterTransactionProxyTemplate">
+        <property name="target">
+            <bean class="phn.nts.ams.fe.business.impl.ProfileManagerImpl">
+                <property name="iAmsCustomerDAO" ref="amsCustomerDAO" />
+                <property name="iAmsCustomerEwalletDAO" ref="amsCustomerEwalletDAO" />
+                <property name="iAmsSysCountryDAO" ref="amsSysCountryDAO" />
+                <property name="iAmsCustomerCreditcardDAO" ref="amsCustomerCreditcardDAO" />
+                <property name="iSysPropertyDAO" ref="sysPropertyDAO" />
+                <property name="iAmsCustomerBankDAO" ref="amsCustomerBankDAO" />
+                <property name="iAmsCustomerServiceDAO" ref="amsCustomerServiceDAO"/>
+                <property name="iAmsIbDAO" ref="amsIbDAO"/>
+                <property name="iAmsCustomerTraceDAO" ref="amsCustomerTraceDAO"/>
+                <property name="mailService" ref="mailService" ></property>
+                <property name="iAmsCustomerDocDAO" ref="amsCustomerDocDAO" ></property>
+                <property name="iAmsSubGroupDAO" ref="amsSubGroupDAO" ></property>
+                <property name="iScCustomerDAO" ref="scCustomerDAO" />
+                <property name="iScCustomerServiceDAO" ref="scCustomerServiceDAO" />
+                <property name="iScBrokerDAO" ref="scBrokerDAO" />
+                <property name="appDateDAO" ref="sysAppDateDAO" />
+                <property name="iScOrderDAO" ref="scOrderDAO" />
+                <property name="amsSysZipcodeDAO" ref="amsSysZipcodeDAO" />
+                <property name="amsWhitelabelConfigDAO" ref="amsWhitelabelConfigDAO" />
+                <property name="amsWhitelabelDAO" ref="amsWhitelabelDAO" />
+                <property name="amsCustomerSurveyDAO" ref="amsCustomerSurveyDAO" />
+                <property name="amsSysBankDAO" ref="amsSysBankDAO" />
+                <property name="amsSysBankBranchDAO" ref="amsSysBankBranchDAO" />
+                <property name="amsAffiliateDAO" ref="amsAffiliateDAO" />
+                <property name="amsWhitelabelReportDAO" ref="amsWhitelabelReportDAO" />
+                <property name="jmsContextSender" ref="JmsContextSender"></property>
+                <property name="postDocumentManager" ref="postDocumentManager"></property>
+                <property name="accountManager" ref="AccountManager"></property>
+                <property name="boCustomerDAO" ref="boCustomerDAO"></property>
+                <property name="iAmsWithdrawalRefDAO" ref="amsWithdrawalRefDAO" />
+            </bean>
+        </property>
+    </bean>
+	<bean id="WithdrawalManager" parent="masterTransactionProxyTemplate">
+        <property name="target">
+            <bean class="phn.nts.ams.fe.business.impl.WithdrawalManagerImpl">
+                <property name="iAmsSysCountryDAO" ref="amsSysCountryDAO" />
+                <property name="iAmsCustomerAkazanDAO" ref="amsCustomerAkazanDAO" />
+                <property name="iAmsCustomerDAO" ref="amsCustomerDAO" />
+                <property name="iAmsWithdrawalDAO" ref="amsWithdrawalDAO" />
+                <property name="iAmsWithdrawalRefDAO" ref="amsWithdrawalRefDAO" />
+                <property name="iSysUniqueidCounterDAO" ref="sysUniqueidCounterDAO" />
+                <property name="iAmsCashFlowDAO" ref="amsCashflowDAO" />
+                <property name="iAmsCashBalanceDAO" ref="amsCashBalanceDAO" />
+                <property name="iSysOperationDAO" ref="sysOperationDAO" />
+                <property name="iSysOperationLogDAO" ref="sysOperationLogDAO" />
+                <property name="iSysAppDateDAO" ref="sysAppDateDAO" />
+                <property name="iAmsCustomerEwalletDAO" ref="amsCustomerEwalletDAO" />
+                <property name="iAmsCustomerBankDAO" ref="amsCustomerBankDAO" />
+                <property name="amsExchangerSymbolDAO" ref="amsExchangerSymbolDAO" />
+                <property name="balanceManager" ref="BalanceManager" />
+                <property name="iAmsPaymentgwBalanceDAO" ref="amsPaymentgwBalanceDAO" />
+                <property name="iAmsPaymentgwWlDAO" ref="amsPaymentgwWlDAO" />
+                <property name="iAmsWithdrawalFeeDAO" ref="amsWithdrawalFeeDAO" />
+                <property name="amsDepositDAO" ref="amsDepositDAO"/>
+                <property name="amsCustomerSurveyDAO" ref="amsCustomerSurveyDAO"/>
+                <property name="amsPaymentGWPrioDAO" ref="amsPaymentGWPrioDAO"/>
+                <property name="amsExchangerDAO" ref="amsExchangerDAO"></property>
+                <property name="amsWhitelabelConfigDAO" ref="amsWhitelabelConfigDAO"></property>
+            </bean>
+        </property>
+    </bean>
+     <bean id="IBManager" parent="masterTransactionProxyTemplate">
+         <property name="target">
+             <bean class="phn.nts.ams.fe.business.impl.IBManagerImpl">
+                 <property name="iAmsWhitelabelConfigDAO" ref="amsWhitelabelConfigDAO" />
+                 <property name="iAmsIbKickbackDAO" ref="amsIbKickbackDAO" />
+                 <property name="iAmsIbDAO" ref="amsIbDAO" />
+                 <property name="iAmsIbClientDAO" ref="amsIbClientDao" />
+                 <property name="iAmsCustomerDAO" ref="amsCustomerDAO" />
+                 <property name="iAmsCustomerServiceDAO" ref="amsCustomerServiceDAO" />
+                 <property name="iAmsCustomerTraceDAO" ref="amsCustomerTraceDAO" />
+                 <property name="iAmsWhitelabelDAO" ref="amsWhitelabelDAO" />
+                 <property name="iSysUniqueidCounterDAO" ref="sysUniqueidCounterDAO" />
+                 <property name="iSysCurrencyDAO" ref="sysCurrencyDAO" />
+                 <!-- <property name="iAmsSysSymbolDAO" ref="amsSysSymbolDAO" /> -->
+                 <property name="iAmsGroupDAO" ref="amsGroupDAO" />
+                 <property name="iAmsSysVirtualBankDAO" ref="amsSysVirtualBankDAO"/>
+                 <property name="iAmsSubGroupDAO" ref="amsSubGroupDAO"/>
+                 <property name="mailService" ref="mailService" ></property>
+                 <property name="iAmsCashBalanceDAO" ref="amsCashBalanceDAO" />
+                 <property name="iAmsTransferMoneyDAO" ref="amsTransferMoneyDAO" />
+                 <!--     	 <property name="iAmsFeListSymbolDAO" ref="amsFeListSymbolDAO" /> -->
+                 <property name="iSysAppDateDAO" ref="sysAppDateDAO" />
+                 <property name="iFxSymbolDAO" ref="fxSymbolDAO" />
+                 <property name="scCustomerDAO" ref="scCustomerDAO" />
+                 <property name="scBrokerDAO" ref="scBrokerDAO" />
+                 <property name="scCustomerServiceDAO" ref="scCustomerServiceDAO" />
+                 <property name="amsSysCountryDAO" ref="amsSysCountryDAO" />
+                 <property name="jmsContextSender" ref="JmsContextSender" />
+             </bean>
+         </property>
+    </bean>
+    <bean id="traderIBManager" parent="masterTransactionProxyTemplate">
+        <property name="target">
+            <bean class="phn.nts.trader.fe.business.impl.IBManagerImpl">
+                <property name="iAmsWhitelabelConfigDAO" ref="amsWhitelabelConfigDAO" />
+                <property name="iAmsIbKickbackDAO" ref="amsIbKickbackDAO" />
+                <property name="iAmsIbDAO" ref="amsIbDAO" />
+                <property name="iAmsIbClientDAO" ref="amsIbClientDao" />
+                <property name="iAmsCustomerDAO" ref="amsCustomerDAO" />
+                <property name="iAmsCustomerServiceDAO" ref="amsCustomerServiceDAO" />
+                <property name="iAmsCustomerTraceDAO" ref="amsCustomerTraceDAO" />
+                <property name="iAmsWhitelabelDAO" ref="amsWhitelabelDAO" />
+                <property name="iSysUniqueidCounterDAO" ref="sysUniqueidCounterDAO" />
+                <property name="iSysCurrencyDAO" ref="sysCurrencyDAO" />
+                <!-- <property name="iAmsSysSymbolDAO" ref="amsSysSymbolDAO" /> -->
+                <property name="iAmsGroupDAO" ref="amsGroupDAO" />
+                <property name="iAmsSysVirtualBankDAO" ref="amsSysVirtualBankDAO"/>
+                <property name="iAmsSubGroupDAO" ref="amsSubGroupDAO"/>
+                <property name="mailService" ref="mailService" ></property>
+                <property name="iAmsCashBalanceDAO" ref="amsCashBalanceDAO" />
+                <property name="iAmsTransferMoneyDAO" ref="amsTransferMoneyDAO" />
+                <!--     	 <property name="iAmsFeListSymbolDAO" ref="amsFeListSymbolDAO" /> -->
+                <property name="iSysAppDateDAO" ref="sysAppDateDAO" />
+                <property name="iFxSymbolDAO" ref="fxSymbolDAO" />
+                <property name="scCustomerDAO" ref="scCustomerDAO" />
+                <property name="scBrokerDAO" ref="scBrokerDAO" />
+                <property name="scCustomerServiceDAO" ref="scCustomerServiceDAO" />
+                <property name="amsSysCountryDAO" ref="amsSysCountryDAO" />
+                <property name="jmsContextSender" ref="JmsContextSender" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="BalanceManager" class="phn.nts.ams.fe.business.impl.BalanceManagerImpl"  parent="abstractManager" scope="singleton">
+    	<property name="iAmsCashBalanceDAO" ref="amsCashBalanceDAO" />
+    	<property name="iAmsCustomerServiceDao" ref="amsCustomerServiceDAO" />
+    	<property name="iAccountManager" ref="AccountManager" />
+    	<property name="iAmsWithdrawalDAO" ref="amsWithdrawalDAO"/>
+    	<property name="iAmsTransferMoneyDAO" ref="amsTransferMoneyDAO" />
+    	<property name="iScInvestmentDAO" ref="scInvestmentDAO"/>
+    	<property name="boManager" ref="boManager"/>
+    </bean>  
+    <bean id="PromotionManager" class="phn.nts.ams.fe.promotion.impl.PromotionManagerImpl">
+    	<property name="iAmsPromotionDAO" ref="amsPromotionDAO" />
+    	<property name="iAmsPromotionBaseCcyDAO" ref="amsPromotionBaseCcyDAO" />
+    	<property name="iAmsPromotionCustomerDAO" ref="amsPromotionCustomerDAO" />
+    </bean>    
+    <bean id="TransferManager" parent="masterTransactionProxyTemplate">
+    	<property name="target">
+	    	<bean class="phn.nts.ams.fe.business.impl.TransferManagerImpl" parent="abstractManager" scope="singleton">
+		    	<property name="iSysUniqueidCounterDAO" ref="sysUniqueidCounterDAO" /> 
+		    	<property name="iAmsCustomerDAO" ref="amsCustomerDAO" />
+		    	<property name="iAmsTransferMoneyDAO" ref="amsTransferMoneyDAO" />
+		    	<property name="iAmsPromotionDAO" ref="amsPromotionDAO" />
+		    	<property name="iAmsPromotionBaseCcyDAO" ref="amsPromotionBaseCcyDAO" />
+		    	<property name="iAmsPromotionCustomerDAO" ref="amsPromotionCustomerDAO" />
+		    	<property name="iSysAppDateDAO" ref="sysAppDateDAO" />
+		    	<property name="iPromotionManager" ref="PromotionManager" />
+		    	<property name="iDepositManager" ref="DepositManager" />    	 
+		    	<property name="iFxSymbolDAO" ref="fxSymbolDAO" />
+		    	<property name="balanceManager" ref="BalanceManager" />
+		    	<property name="iAmsCashBalanceDAO" ref="amsCashBalanceDAO" />
+		    	<property name="iSysCurrencyDAO" ref="sysCurrencyDAO" />
+		    	<property name="iAmsDepositDAO" ref="amsDepositDAO" />
+		    	<property name="iAmsCustomerServiceDAO" ref="amsCustomerServiceDAO" />
+		    	<property name="iAccountManager" ref="AccountManager" />
+		    	<property name="scCustomerServiceDAO" ref="scCustomerServiceDAO"/>
+		    	<property name="amsCashBalanceDAO" ref="amsCashBalanceDAO"/>
+		    	<property name="jmsContextSender" ref="JmsContextSender" />
+		    	<property name="boManager" ref="boManager"/>
+		    	<property name="boCustomerDAO" ref="boCustomerDAO"/>
+	    	 </bean>
+	   	</property>
+    </bean>
+    <bean id="ReportManager" parent="masterTransactionProxyTemplate">
+        <property name="target">
+            <bean class="phn.nts.ams.fe.business.impl.ReportManagerImpl">
+                <property name="amsWhitelabelReportDAO" ref="amsWhitelabelReportDAO" />
+                <property name="profileManager" ref="ProfileManager" />
+            </bean>
+        </property>
+    </bean>
+    
+    <!-- EXCHANGER -->
+    <bean id="ExchangerManager" parent="masterTransactionProxyTemplate">
+        <property name="target">
+            <bean class="phn.nts.ams.fe.business.impl.ExchangerManagerImpl">
+                <property name="amsCashBalanceDAO" ref="amsCashBalanceDAO" />
+                <property name="amsExchangerSymbolDAO" ref="amsExchangerSymbolDAO" />
+                <property name="amsViewFeSearchHistoryDAO" ref="amsFeSearchHistoryDAO" />
+                <property name="amsFeExchangerHistoryDAO" ref="amsFeExchangerHistoryDAO" />
+                <property name="amsExchangerDAO" ref="amsExchangerDAO" />
+                <property name="depositDAO" ref="amsDepositDAO" />
+                <property name="iSysUniqueidCounterDAO" ref="sysUniqueidCounterDAO" />
+                <property name="iSysAppDateDAO" ref="sysAppDateDAO" />
+                <property name="cashflowDAO" ref="amsCashflowDAO" />
+                <property name="cashBalanceDAO" ref="amsCashBalanceDAO" />
+                <property name="transferMoneyDAO" ref="amsTransferMoneyDAO" />
+                <property name="customerServiceDAO" ref="amsCustomerServiceDAO" />
+                <property name="withdrawalDAO" ref="amsWithdrawalDAO" />
+                <property name="customerDAO" ref="amsCustomerDAO" />
+                <property name="amsCustomerSurveyDAO" ref="amsCustomerSurveyDAO"/>
+                <property name="jmsContextSender" ref="JmsContextSender" />
+            </bean>
+        </property>
+    </bean>
+    <!-- END EXCHANGER -->
+    
+    <!-- DEMO CONTEST -->
+    <bean id="DemoContestManager" class="phn.nts.ams.fe.business.impl.DemoContestManagerImpl">
+		<property name="amsDemoContestDAO" ref="amsDemoContestDAO" />
+		<property name="amsCustomerDAO" ref="amsCustomerDAO" />
+		<property name="uniqueidCounterDAO" ref="sysUniqueidCounterDAO" />
+		<property name="amsDmcCustomerContestDAO" ref="amsDmcCustomerContestDAO" />
+		<property name="jmsContextSender" ref="JmsContextSender" />
+		
+    </bean>
+    <!-- END DEMO CONTEST -->
+    
+    <bean id="MessageManager" parent="masterTransactionProxyTemplate">
+        <property name="target">
+            <bean class="phn.nts.ams.fe.business.impl.MessageManagerImpl">
+                <property name="iAmsMessageDAO" ref="amsMessageDAO"/>
+                <property name="iAmsMessageReadTraceDAO" ref="amsMessageReadTraceDAO"/>
+            </bean>
+        </property>
+    </bean>
+    <bean id="ISystemPropertyManager" parent="masterTransactionProxyTemplate">
+    	<property name="target">
+			<bean class="phn.nts.ams.fe.business.impl.SystemPropertyManagerImpl">
+		    	<property name="sysPropertyDAO" ref="sysPropertyDAO" ></property>	
+		    	<property name="amsWhiteLabelDAO" ref="amsWhitelabelDAO" />
+		    	<property name="amsWhitelabelConfigDAO" ref="amsWhitelabelConfigDAO" />
+		    	<property name="sysCurrencyDAO" ref="sysCurrencyDAO" />
+		    	<property name="amsMailTemplateDAO" ref="amsMailTemplateDAO" />
+		    	<property name="fxSymbolDAO" ref="fxSymbolDAO" />
+		    	<property name="amsPaymentgwWlDAO" ref="amsPaymentgwWlDAO" />
+		    	<property name="sysAppDateDAO" ref="sysAppDateDAO"></property>
+			</bean>
+		</property>   
+	</bean> 	
+	<!-- [start] Social -->
+	<bean id="SocialManager" parent="masterTransactionProxyTemplate">
+        <property name="target">
+            <bean parent="abstractManager" class="phn.nts.ams.fe.business.impl.SocialManagerImpl">
+                <property name="scInvestmentDAO" ref="scInvestmentDAO"></property>
+                <property name="amsWhiteLabelConfigDAO" ref="amsWhitelabelConfigDAO"></property>
+                <property name="scInvestmentCashFlowDAO" ref="scInvestmentCashFlowDAO"></property>
+                <property name="scCustomerDAO" ref="scCustomerDAO"></property>
+                <property name="scOrderDAO" ref="scOrderDAO"></property>
+                <property name="sysAppDateDAO" ref="sysAppDateDAO"></property>
+                <property name="fxSymbolDAO" ref="fxSymbolDAO" />
+                <property name="scSummaryTradingCustDAO" ref="scSummaryTradingCustDAO"/>
+                <property name="scCustomerServiceDAO" ref="scCustomerServiceDAO"/>
+                <property name="scCustomerCopyDAO" ref="scCustomerCopyDAO"/>
+                <property name="scCustomerFollowDAO" ref="scCustomerFollowDAO"/>
+                <property name="sysPropertyDAO" ref="sysPropertyDAO"></property>
+                <property name="sysUniqueIdCounterDAO" ref="sysUniqueidCounterDAO"/>
+                <property name="amsCustomerDAO" ref="amsCustomerDAO"></property>
+                <property name="scFeedDao" ref="scFeedDao"></property>
+                <property name="amsSysCountryDAO" ref="amsSysCountryDAO"></property>
+                <property name="amsCustomerSurveyDAO" ref="amsCustomerSurveyDAO" />
+                <property name="amsWhitelabelCalendarDAO" ref="amsWhitelabelCalendarDAO" />
+                <property name="amsCustomerServiceDAO" ref="amsCustomerServiceDAO"/>
+                <property name="amsMessageDAO" ref="amsMessageDAO"/>
+                <property name="amsMessageReadTraceDAO" ref="amsMessageReadTraceDAO"/>
+                <property name="amsCustomerTraceDAO" ref="amsCustomerTraceDAO"/>
+                <property name="amsCashBalanceDAO" ref="amsCashBalanceDAO"/>
+                <property name="jmsRealSender" ref="JmsRealSender"/>
+            </bean>
+        </property>
+	</bean>
+	<!-- [end] Social -->
+	<bean id="postDocumentManager" class="phn.com.components.trs.business.impl.TrsPostDocumentManagerImpl">
+	</bean>
+	<bean id="abstractManager" abstract="true" class="phn.nts.ams.fe.common.AbstractManager">
+        <property name="fxSummaryRateDAO" ref="fxSummaryRateDAO"/>
+    </bean>
+	<bean id="mt4Manager" class="phn.nts.ams.fe.mt4.MT4Manager">
+		<property name="jmsRealSender" ref="JmsRealSender"/>
+		<property name="instance" ref="mt4Manager"/>
+	</bean>
+	<bean id="ntdManager" class="phn.nts.ams.fe.ntd.NTDManager">
+		<property name="instance" ref="ntdManager"/>
+		<property name="jmsRealSender" ref="JmsRealSender"/>
+		<property name="ntdRequestQueue" value="queue.AMSRequestInfo"/>
+		<property name="protoVersion" value="${api.ntd.protoVersion}"/>
+		<property name="service" value="${api.ntd.service}"/>
+	</bean>
+	
+	<bean id="scManager" class="phn.nts.ams.fe.social.SCManager">
+		<property name="instance" ref="scManager"/>
+		
+		<property name="serverHost" value="${api.sc.serverHost}"/>
+		<property name="serverPort" value="${api.sc.serverPort}"/>
+		<property name="verbose" value="${api.sc.verbose}"/>
+		<property name="heartBeatInteval" value="${api.sc.heartBeatInteval}"/>
+		<property name="requestTimedOut" value="${api.sc.requestTimedOut}"/>
+	</bean>
+	
+	<bean id="boManager" class="phn.nts.ams.fe.jms.managers.BoManager" scope="singleton">
+		<property name="jmsBoSender" ref="JmsBoSender"/>
+	</bean>
+	
+	<bean id="testBoManager" parent="masterTransactionProxyTemplate">
+        <property name="target">
+            <bean parent="abstractManager" class="phn.nts.ams.fe.business.impl.TestBoManagerImpl">
+                <property name="whiteLableConfig" ref="amsWhitelabelConfigDAO"/>
+				<property name="boCustomerDAO" ref="boCustomerDAO"/>
+				<property name="testSummaryDAO" ref="amsTestSummaryDAO"/>
+				<property name="amsQuestionnaireDAO" ref="amsQuestionnaireDAO"/>
+				<property name="amsCustomerTestDAO" ref="amsCustomerTestDAO"></property>
+				<property name="amsCustomerServiceDAO" ref="amsCustomerServiceDAO"></property>
+				<property name="sysAppDateDAO" ref="sysAppDateDAO"></property>
+				<property name="rptUsedBoTestDAO" ref="rptUsedBoTestDAO"></property>
+				<property name="iSysUniqueidCounterDAO" ref="sysUniqueidCounterDAO"></property>
+				<property name="amsPackageTestDAO" ref="amsPackageTestDAO"></property>
+		    	<property name="boManager" ref="boManager"/>
+		    	<property name="jmsContextSender" ref="JmsContextSender" />
+		    	<property name="amsCustomerSurveyDAO" ref="amsCustomerSurveyDAO" />
+		    	<property name="amsCustomerTraceDAO" ref="amsCustomerTraceDAO" />
+            </bean>
+        </property>
+	</bean>
+</beans>

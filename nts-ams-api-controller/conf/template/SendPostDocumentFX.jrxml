@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SendPostDocument" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="581" leftMargin="7" rightMargin="7" topMargin="7" bottomMargin="7" isIgnorePagination="true" uuid="59ee5c41-ad85-4439-a8d6-3eda79dbc7bf">
+	<property name="ireport.zoom" value="1.1269722013523678"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="92"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="zipcode" class="java.lang.String"/>
+	<parameter name="address" class="java.lang.String"/>
+	<parameter name="fullName" class="java.lang.String"/>
+	<parameter name="loginId" class="java.lang.String"/>
+	<parameter name="password" class="java.lang.String"/>
+	<parameter name="mt4Id" class="java.lang.String"/>
+	<parameter name="mt4Pass" class="java.lang.String"/>
+	<parameter name="socialId" class="java.lang.String"/>
+	<parameter name="bankName" class="java.lang.String"/>
+	<parameter name="branchName" class="java.lang.String"/>
+	<parameter name="accountType" class="java.lang.String"/>
+	<parameter name="bankAccNo" class="java.lang.String"/>
+	<parameter name="accountName" class="java.lang.String"/>
+	<parameter name="companyName" class="java.lang.String"/>
+	<parameter name="pcUrl" class="java.lang.String"/>
+	<parameter name="wlName" class="java.lang.String"/>
+	<parameter name="yyyy" class="java.lang.String"/>
+	<parameter name="mm" class="java.lang.String"/>
+	<parameter name="dd" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="customerId" class="java.lang.String"/>
+	<parameter name="addressName" class="java.lang.String"/>
+	<parameter name="banksLogo" class="java.lang.String"/>
+	<parameter name="yyyymmdd" class="java.lang.String"/>
+	<title>
+		<band height="820" splitType="Stretch">
+			<rectangle radius="0">
+				<reportElement uuid="20eb636e-e430-4324-a831-6b541944a731" positionType="Float" x="25" y="281" width="532" height="420"/>
+				<graphicElement>
+					<pen lineStyle="Solid" lineColor="#000000"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="1483a58b-e1c4-47d1-b902-eb4d89d07933" positionType="Float" x="23" y="398" width="148" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[シストレ口座ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3489bea4-3ac5-4ca0-9494-11fbbbe21c83" positionType="Float" x="25" y="281" width="525" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Meiryo" size="12" isBold="true" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[■ システムトレーダー（マイページ）ログイン情報]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a6d28ee8-214d-4853-abd3-6e690796f243" positionType="Float" mode="Transparent" x="54" y="176" width="471" height="42" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Meiryo" size="14" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="10.0"/>
+				</textElement>
+				<text><![CDATA[「みんなのシストレ」「みんなのオプション」（店頭デリバティブ取引）
+ＩＤ・パスワードのご連絡
+
+]]></text>
+			</staticText>
+			<image scaleImage="RetainShape" hAlign="Right" vAlign="Middle" onErrorType="Blank">
+				<reportElement uuid="47fab0c2-c9e8-4416-ba28-2cffaf7b5479" x="364" y="40" width="193" height="32"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="11b8d899-56cb-4a96-83a5-dde3da3f165f" x="478" y="20" width="76" height="20" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Meiryo" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{yyyymmdd}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a4924afa-024b-474f-941c-a20b003b3d05" x="364" y="134" width="217" height="20"/>
+				<textElement>
+					<font fontName="Meiryo" size="9" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[TEL:0120-307-144    E-mail:service@min-st.jp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5368f485-7c3a-4cb0-9526-b2bf4cab12a6" x="26" y="18" width="79" height="20"/>
+				<textElement>
+					<font fontName="Meiryo" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[〒]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="19856cd9-65e4-47f5-b792-536368f73001" mode="Transparent" x="39" y="18" width="267" height="20" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Meiryo" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{zipcode}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="0">
+				<reportElement uuid="5eebf541-0dd6-445c-8f19-7f245632fc98" positionType="Float" mode="Opaque" x="52" y="495" width="457" height="90"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#CCCCCC"/>
+				</graphicElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="680d6f3c-1fc2-48aa-b83d-ba16ff69279e" mode="Transparent" x="26" y="32" width="288" height="143" forecolor="#000000"/>
+				<textElement markup="html">
+					<font fontName="Meiryo" size="11" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="10.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{addressName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4f39fe57-1aff-4f7c-b9d8-096dc1ca4319" positionType="Float" x="23" y="303" width="148" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ログインID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a900d8dd-1c4c-4c96-810c-72765058a83f" positionType="Float" x="23" y="321" width="148" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[パスワード]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="63d0a43d-e8a5-460c-8f17-a8757c606cf5" positionType="Float" mode="Transparent" x="172" y="303" width="361" height="19" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{loginId}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="04091ea6-7685-4b32-be3d-839c32292e86" positionType="Float" isPrintRepeatedValues="false" mode="Transparent" x="172" y="321" width="376" height="19" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Meiryo" size="10" pdfFontName="Tahoma" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{password}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="81adc7ea-27f3-4788-b12e-5ee1aab34337" positionType="Float" x="41" y="588" width="139" height="18"/>
+				<textElement>
+					<font fontName="Meiryo" size="12" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[【２】通常のお振込み]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="76698259-6df2-4a5b-a062-a711110fb1c2" positionType="Float" x="95" y="604" width="76" height="16"/>
+				<textElement>
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[銀行名]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6e82a522-ab48-4d6e-af12-522f58f7607e" positionType="Float" mode="Transparent" x="180" y="604" width="139" height="16" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bankName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9924f5b2-ea3a-45b7-b357-7b5796c26369" positionType="Float" x="95" y="620" width="76" height="16"/>
+				<textElement>
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[支店名]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2b5f0dea-32a6-4e5d-862a-21d71541f309" positionType="Float" mode="Transparent" x="180" y="620" width="139" height="16" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{branchName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="43660e1c-1c4c-433e-9a0e-fe8691208dd4" positionType="Float" mode="Transparent" x="181" y="652" width="139" height="16" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bankAccNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="51e0140f-86ed-458b-823c-a193ea31fa3a" positionType="Float" x="96" y="652" width="76" height="16"/>
+				<textElement>
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[銀行口座番号]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="be7d43fc-0764-44f0-ac43-b378e5fc91b6" positionType="Float" mode="Transparent" x="180" y="636" width="139" height="16" forecolor="#000000"/>
+				<textElement>
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{accountType}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2a67d405-5ef4-4726-8d35-583d0adf87da" positionType="Float" x="95" y="636" width="76" height="16"/>
+				<textElement>
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[預金種別]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="7ead479c-0594-45d3-b968-f146f82a43c0" positionType="Float" mode="Transparent" x="181" y="668" width="139" height="16" forecolor="#000000"/>
+				<textElement markup="html">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{accountName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a38b23b9-23d3-4baf-a54d-d97c3dddcd97" positionType="Float" x="96" y="668" width="76" height="16"/>
+				<textElement>
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[口座名]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b942985-8e7b-4c2e-9da2-b7d9775a0b7e" positionType="Float" x="27" y="729" width="532" height="13"/>
+				<textElement>
+					<font fontName="Meiryo" size="7" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[※MT4取引システムは別途インストールが必要になります。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5870d57e-2d6b-4aa8-a8e3-4bfb88ede740" positionType="Float" x="27" y="753" width="532" height="13"/>
+				<textElement>
+					<font fontName="Meiryo" size="7" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[※ＩＤパスワードはすべて半角英数字でご入力ください。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d2e7b2e8-b54b-4f52-9d0f-aa125a2277f8" positionType="Float" mode="Opaque" x="26" y="793" width="531" height="18" isPrintInFirstWholeBand="true" forecolor="#FFFFFF" backcolor="#333333"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Meiryo" size="11" isBold="true" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[この用紙は大切に保管していただきます様、宜しくお願い申し上げます。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0f606b1d-0613-4183-8d8b-a1f205eb37a3" positionType="Float" x="23" y="360" width="148" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[トレード口座ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d5e7b00e-e47c-4496-93a1-0b4f0d23da1d" positionType="Float" x="25" y="339" width="251" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Meiryo" size="12" isBold="true" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[■ MT4ログイン情報]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e632aec5-8406-41df-ac6c-8557414a9de1" positionType="Float" mode="Transparent" x="172" y="360" width="273" height="19" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mt4Id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="521f73b6-fe8f-4b34-b61c-8e13ec85f640" positionType="Float" x="23" y="379" width="148" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[パスワード]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e81f3d03-6d7c-4a90-b2ec-86f27a002959" positionType="Float" mode="Transparent" x="172" y="398" width="273" height="19" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{socialId}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d027bbc8-fbb3-4c2b-bc08-18db5cbf94bc" positionType="Float" isPrintRepeatedValues="false" mode="Transparent" x="172" y="417" width="273" height="19" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Meiryo" size="10" pdfFontName="Tahoma" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mt4Pass}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5fb36ce8-2f02-4bbf-adfd-faba721a80bd" positionType="Float" x="23" y="417" width="148" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[パスワード]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ddb94952-70ae-481f-b70d-d4ced0147b30" positionType="Float" x="25" y="435" width="146" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Meiryo" size="12" isBold="true" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[■ ご入金の方法]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1e9f7e2f-d9d3-40d9-a35e-ead321145c52" positionType="Float" x="27" y="705" width="532" height="13"/>
+				<textElement>
+					<font fontName="Meiryo" size="7" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[※システムトレーダー（マイページ）ログイン方法]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="71b9be5a-b301-4ea7-9a4d-6b545bb69945" x="364" y="101" width="193" height="34"/>
+				<textElement>
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[東京都港区浜松町一丁目１０番１４号
+住友東新橋ビル３号館７階]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="14fea71e-0fec-458d-8269-56dbf43ff2ec" x="364" y="82" width="193" height="20"/>
+				<textElement>
+					<font fontName="Meiryo" size="9" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[〒105-0013]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6500cc08-51d7-4cfa-9f2a-d19f6a084526" positionType="Float" x="25" y="217" width="544" height="41"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Meiryo" size="9" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[この度は、「みんなのシストレ」（店頭デリバティブ取引）に口座開設いただきまして誠にありがとうございます。口座開設手続きが
+完了いたしましたので、お客様のログイン情報とお振込み先口座情報をお知らせいたします。なお、「みんなのオプション」におきま
+しては、知識確認テストを行っていただく必要がございます。テスト合格後に当社にて承認完了後、取引可能となります。
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="46f7e5d0-6387-4cfc-bbd5-94df1fd6945f" positionType="Float" x="173" y="435" width="256" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Meiryo" size="12" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ご入金方法は下記の2通りございます。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bf6caba0-c729-45b9-9300-53ed6e25f47c" positionType="Float" x="41" y="456" width="130" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Meiryo" size="12" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[【1】ダイレクト入金]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="769c904a-2a8a-4e0f-90bc-2e179f3e644d" positionType="Float" x="63" y="473" width="485" height="18"/>
+				<textElement>
+					<font fontName="Meiryo" size="10" isItalic="false" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[取引システムから直接入金のお手続きが可能です。振込手数料は無料、ほぼリアルタイムで反映されます。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f5d9360e-f974-46d3-bbff-c9dfaaa5bded" positionType="Float" mode="Opaque" x="62" y="489" width="73" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Meiryo" size="9" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[提携金融機関一覧]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3eb49c08-a760-4ee1-a1a1-4506f13a0606" positionType="Float" x="27" y="765" width="532" height="13"/>
+				<textElement>
+					<font fontName="Meiryo" size="7" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[※セキュリティ保持の為、パスワードを定期的にご変更いただきますようお願いいたします。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d6b90d7-b795-45cc-bf88-eebba9c39cd9" positionType="Float" x="34" y="717" width="509" height="13"/>
+				<textElement>
+					<font fontName="Meiryo" size="7" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[「みんなのシストレ」ホームページ＞「ログイン」画面よりお進みください。（https://my.min-st.jp/ams/login）]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d60bd252-18d8-4723-8561-a1ec810ce407" positionType="Float" x="34" y="741" width="509" height="13"/>
+				<textElement>
+					<font fontName="Meiryo" size="7" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[「みんなのシストレ」ホームページ＞サービスのご案内＞MT4からインストールができます。（http://www.min-st.jp/service/system/mt4/）
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e45963ea-5d21-495d-8fce-f5ea9d635d6a" positionType="Float" x="34" y="777" width="509" height="13"/>
+				<textElement>
+					<font fontName="Meiryo" size="7" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[変更したパスワードはメモを取るなどお忘れにならないよう、お客様自身で厳重に管理してください。]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cca9a233-763a-4e43-bcf0-5e59df695ea0" positionType="Float" x="172" y="604" width="13" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bd9e4f71-fcdd-4534-99c2-d8bcccb04098" positionType="Float" x="172" y="620" width="13" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f7a8958c-f5c9-4a50-9e9f-060656ec6007" positionType="Float" x="172" y="636" width="13" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3c84dd36-3011-44b4-916f-16d4d86e34ac" positionType="Float" x="172" y="652" width="13" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fd3fbb19-4ab4-4b26-ad96-1c72f3c04cd3" positionType="Float" x="172" y="668" width="13" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Meiryo" size="10" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<image onErrorType="Blank">
+				<reportElement uuid="04865bb7-ea85-4996-ab89-7f3938d17711" positionType="Float" x="64" y="506" width="431" height="68"/>
+				<imageExpression><![CDATA[$P{banksLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="c9e69bf1-34cf-4ca6-9bfd-5497d7ebbdfe" x="457" y="20" width="22" height="20"/>
+				<textElement>
+					<font fontName="Meiryo" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[平成]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="460b98ac-db12-4f58-8f41-91567cdfde3f" positionType="Float" x="25" y="321" width="532" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="4e70841d-f6a9-4772-82bb-1499eed76ebc" positionType="Float" x="171" y="304" width="1" height="35"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="78a4835d-8879-46c8-82b0-bc730a03a86d" positionType="Float" x="172" y="361" width="1" height="72"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="8221ac87-b503-4658-9400-00fe42aa2c43" positionType="Float" x="25" y="378" width="532" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="b2177461-631b-4d4d-9828-411d00feddae" positionType="Float" x="25" y="396" width="532" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="f6880336-2d12-431b-83ab-f3240f60fcaa" positionType="Float" x="26" y="414" width="531" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="7661f246-3c5a-47e9-baf9-558924ee6fe2" positionType="Float" x="25" y="302" width="532" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="c0fda99f-9dff-495a-b976-bacba0fea50f" positionType="Float" x="25" y="339" width="532" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="0033ab10-1b71-4e1b-a7c9-da5659d5c0b7" positionType="Float" x="25" y="360" width="532" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="6334c881-ed8c-4a2b-8a49-265d17b7a818" positionType="Float" x="25" y="433" width="532" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="6f7e36d9-1191-41f1-9332-d0d306e968df" positionType="Float" isPrintRepeatedValues="false" mode="Transparent" x="172" y="379" width="273" height="19" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Meiryo" size="10" pdfFontName="Tahoma" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mt4Pass}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e20580aa-bd0b-48c1-91e4-4ba1ed4e2dda" positionType="Float" x="25" y="262" width="544" height="19"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Meiryo" size="9" pdfFontName="Meiryo" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[※「みんなのオプション」はシステムトレーダーからログインできます。]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

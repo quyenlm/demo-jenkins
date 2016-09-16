@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:sec="http://www.springframework.org/schema/security" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+        http://www.springframework.org/schema/security 
+        http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+ 	<sec:http auto-config="false" access-denied-page="/accessDenied.jsp" >
+ 		<!-- <sec:intercept-url pattern="/account/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+ 		<sec:intercept-url pattern="/account/viewForgotPassword" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
+ 		<sec:intercept-url pattern="/account/resetPassword" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
+ 		<sec:intercept-url pattern="/account/verifyLink" access="IS_AUTHENTICATED_ANONYMOUSLY"  /> 		
+ 		<sec:intercept-url pattern="/account/userChangePassword" access="IS_AUTHENTICATED_ANONYMOUSLY"  /> 
+ 		<sec:intercept-url pattern="/profile/searchBankPopup" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+ 		<sec:intercept-url pattern="/profile/searchBranchPopup" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <sec:intercept-url pattern="/accessDenied.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY, ROLE_NORMAL_IB" requires-channel="any"/>
+        <sec:intercept-url pattern="/deposit/*" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB" requires-channel="any"/>
+     	<sec:intercept-url pattern="/withdrawal/*" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB" requires-channel="any"/>
+     	<sec:intercept-url pattern="/history/*" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB" requires-channel="any"/>
+     	<sec:intercept-url pattern="/report/*" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB" requires-channel="any"/>
+     	<sec:intercept-url pattern="/profile/*" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB" requires-channel="any"/>
+     	<sec:intercept-url pattern="/account/*" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB"  requires-channel="any" />     	
+     	<sec:intercept-url pattern="/transfer/*" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB"  requires-channel="any" />
+     	<sec:intercept-url pattern="/account*/*" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB"  requires-channel="any" />
+     	<sec:intercept-url pattern="/social/home" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB"  requires-channel="any" />
+     	<sec:intercept-url pattern="/social/*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+     	<sec:intercept-url pattern="/exchanger/*" access="ROLE_EXCHANGER"  requires-channel="any" />
+     	<sec:intercept-url pattern="/ibManagement/*" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB"  requires-channel="any" />
+     	<sec:intercept-url pattern="/ibManagement/index" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB"  requires-channel="any" />
+     	<sec:intercept-url pattern="/ibManagement/customerInformation" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB"  requires-channel="any" />
+     	<sec:intercept-url pattern="/ibManagement/registerCustomerInformation" access="ROLE_CONTRACT_IB"  requires-channel="any" />
+     	<sec:intercept-url pattern="/ibManagement/depositWithdrawal" access="ROLE_CONTRACT_IB"  requires-channel="any" />
+     	<sec:intercept-url pattern="/ibManagement/kickbackHistory" access="ROLE_NORMAL_IB, ROLE_CONTRACT_IB"  requires-channel="any" /> -->
+     	
+     	     	
+		<!-- <sec:http-basic/> -->
+
+        <sec:form-login login-page="/account/login" 
+				authentication-failure-url="/account/login?login_error=true" 
+				default-target-url="${default-target-url}" always-use-default-target='true' />
+
+        <sec:logout logout-success-url="/account/login" invalidate-session="true"/>
+	</sec:http>
+	<sec:authentication-manager>
+		<sec:authentication-provider user-service-ref="AuthenticationService">
+			<sec:password-encoder ref="PasswordEncoder"/>
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+	<bean id="PasswordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder">
+	</bean>
+	<bean id="springLogoutHandle" class="phn.nts.ams.fe.security.LogoutSuccessHandler">
+        <property name="logoutUrl" value="/security/login"></property>
+        <property name="jmsSender" ref="JmsRealSender"></property>
+    </bean>
+	
+	 <!-- Roles:  -->
+	 <bean id="AuthenticationService" class="phn.nts.ams.fe.security.FrontUserDetailsService">
+	 	<property name="accountManager" ref="AccountManager" />	
+	 </bean>
+
+</beans>
